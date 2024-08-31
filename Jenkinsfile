@@ -10,7 +10,6 @@ pipeline {
             steps {
                 echo 'Building...'
                 // Add any necessary build steps for your project
-                // For a simple HTML project, this might be empty or just a placeholder
             }
         }
         stage('Test') {
@@ -39,16 +38,16 @@ pipeline {
             steps {
                 script {
                     echo 'Deploying...'
-                    
-                    // Start a simple HTTP server to serve the HTML file
-                    sh 'nohup python3 -m http.server 8080 &'
+
+                    // Start a simple HTTP server to serve the HTML file on Windows
+                    bat 'start /B python -m http.server 8080'
                     echo 'Website is being served on http://localhost:8080'
 
                     // Wait for a few seconds to ensure the server starts
                     sleep(time: 5, unit: 'SECONDS')
 
                     // Optionally, you can curl the website to make sure it's up
-                    sh 'curl -I http://localhost:8080'
+                    bat 'curl -I http://localhost:8080'
                 }
             }
         }
