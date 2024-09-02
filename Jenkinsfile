@@ -40,7 +40,8 @@ pipeline {
                     echo 'Deploying...'
 
                     // Start a simple HTTP server to serve the HTML file on Windows
-                    bat 'start /B python -m http.server 9090'
+                    bat 'C:\\path_to_python\\python.exe -m http.server 9090'
+                    bat 'python -m http.server 9090'
                     echo 'Website is being served on http://localhost:9090'
 
                     // Wait for a few seconds to ensure the server starts
