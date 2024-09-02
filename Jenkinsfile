@@ -40,14 +40,14 @@ pipeline {
                     echo 'Deploying...'
 
                     // Start a simple HTTP server to serve the HTML file on Windows
-                    bat 'start /B python -m http.server 8080'
-                    echo 'Website is being served on http://localhost:8080'
+                    bat 'start /B python -m http.server 9090'
+                    echo 'Website is being served on http://localhost:9090'
 
                     // Wait for a few seconds to ensure the server starts
                     sleep(time: 5, unit: 'SECONDS')
 
                     // Optionally, you can curl the website to make sure it's up
-                    bat 'curl -I http://localhost:8080'
+                    bat 'curl -I http://localhost:9090'
                 }
             }
         }
