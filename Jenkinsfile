@@ -14,7 +14,7 @@ pipeline {
 
                     // Use the full path to the Python executable if necessary
                     // On Windows, it might be something like: 'C:\\Python39\\python.exe'
-                    bat 'python your_script.py'
+                    bat 'python hello.py'
                 }
             }
         }
