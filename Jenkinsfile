@@ -39,10 +39,15 @@ pipeline {
                 script {
                     echo 'Deploying...'
 
-                    // Use the full path to the Python executable if necessary
-                    // On Windows, it might be something like: 'C:\\Python39\\python.exe'
-                    bat 'C:\Users\truea\AppData\Local\Programs\Python\Python312 hello.py' 
-                    bat 'python hello.py'
+                    // Start a simple HTTP server to serve the HTML file on Windows
+                    bat 'python -m http.server 9090'
+                    echo 'Website is being served on http://localhost:9090'
+
+                    // Wait for a few seconds to ensure the server starts
+                    sleep(time: 5, unit: 'SECONDS')
+
+                    // Optionally, you can curl the website to make sure it's up
+                    bat 'curl -I http://localhost:9090'
                 }
             }
         }
@@ -59,4 +64,4 @@ pipeline {
             echo 'Pipeline failed!'
         }
     }
-}
+} 
